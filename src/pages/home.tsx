@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Calculator from "../components/Calculator";
 
@@ -10,9 +11,25 @@ const Container = styled.div`
 `;
 
 const Home = () => {
+  const [currValue, setCurrValue] = useState("0");
+  const [operation, setOperation] = useState("");
+
+  const selectDigit = (digit: string) => {
+    setCurrValue(digit);
+  };
+
+  const selectOperation = (operation: string) => {
+    setOperation(operation);
+  };
+
   return (
     <Container>
-      <Calculator />
+      <Calculator
+        selectDigit={selectDigit}
+        selectOperation={selectOperation}
+        operation={operation}
+        currValue={currValue}
+      />
     </Container>
   );
 };
