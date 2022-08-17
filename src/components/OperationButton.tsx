@@ -18,7 +18,7 @@ const OperationButton: React.FC<OperationProps> = ({
   selectedOperation,
 }) => {
   return (
-    <Grid item>
+    <Grid item xs={3}>
       <StyledButton
         variant="contained"
         fullWidth
