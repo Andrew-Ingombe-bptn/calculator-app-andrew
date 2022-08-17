@@ -4,19 +4,36 @@ import Display from "./Display";
 
 const CalculatorWrapper = styled.div`
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   margin: 16px;
   border-radius: 5px;
   background-color: #fff;
   overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 16px;
 `;
 
-const Calculator = () => {
+type CalculatorProps = {
+  selectDigit: (digit: string) => void;
+  selectOperation: (operation: string) => void;
+  operation: string;
+  currValue: string;
+};
+
+const Calculator = ({
+  selectDigit,
+  selectOperation,
+  operation,
+  currValue,
+}: CalculatorProps) => {
   return (
     <CalculatorWrapper>
       <Display />
-      <Pad />
+      <Pad
+        selectOperation={selectOperation}
+        selectDigit={selectDigit}
+        operation={operation}
+      />
     </CalculatorWrapper>
   );
 };
