@@ -4,13 +4,14 @@ import Display from "./Display";
 
 const CalculatorWrapper = styled.div`
   width: 100%;
-  max-width: 380px;
+  max-width: 300px;
   margin: 16px;
   border-radius: 5px;
   background-color: #fff;
   overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 16px;
+  border: 2px solid #009688;
 `;
 
 type CalculatorProps = {
@@ -28,7 +29,7 @@ const Calculator = ({
 }: CalculatorProps) => {
   return (
     <CalculatorWrapper>
-      <Display />
+      <Display currValue={currValue} />
       <Pad
         selectOperation={selectOperation}
         selectDigit={selectDigit}
