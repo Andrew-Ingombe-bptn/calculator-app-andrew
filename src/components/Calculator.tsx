@@ -22,6 +22,7 @@ type CalculatorProps = {
   clear: () => void;
   del: () => void;
   percent: () => void;
+  equals: () => void;
 };
 
 const Calculator = ({
@@ -32,6 +33,7 @@ const Calculator = ({
   clear,
   del,
   percent,
+  equals,
 }: CalculatorProps) => {
   return (
     <CalculatorWrapper>
@@ -43,6 +45,7 @@ const Calculator = ({
         clear={clear}
         del={del}
         percent={percent}
+        equals={equals}
       />
     </CalculatorWrapper>
   );

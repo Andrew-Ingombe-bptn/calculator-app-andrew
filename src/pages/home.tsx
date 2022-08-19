@@ -16,12 +16,64 @@ const Home = () => {
   const [prevValue, setPrevValue] = useState("");
   const [overWrite, setOverWrite] = useState(true);
 
+  // calculate function
+  const calculate = () => {
+    if (!prevValue || !operation) return currValue;
+    const curr = parseFloat(currValue);
+    const prev = parseFloat(prevValue);
+
+    let result;
+
+    switch (operation) {
+      case "/":
+        result = prev / curr;
+        break;
+      case "*":
+        result = prev * curr;
+        break;
+      case "-":
+        result = prev - curr;
+        break;
+      case "+":
+        result = prev + curr;
+        break;
+    }
+
+    return result;
+  };
+
+  // equal button
+  const equals = () => {
+    const val = calculate();
+
+    console.log("value", val);
+    setCurrValue(`${val}`);
+    setPrevValue("");
+    setOperation("");
+    setOverWrite(true);
+  };
+
   const selectDigit = (digit: string) => {
-    setCurrValue(digit);
+    if (currValue[0] === "0" && digit === "0") return;
+    if (currValue.includes(".") && digit == ".") return;
+    if (overWrite && digit !== ".") {
+      setCurrValue(digit);
+    } else {
+      setCurrValue(`${currValue}${digit}`);
+    }
+    setOverWrite(false);
   };
 
   const selectOperation = (operation: string) => {
+    if (prevValue) {
+      const val = calculate();
+      setCurrValue(`${val}`);
+      setPrevValue(`${val}`);
+    } else {
+      setPrevValue(currValue);
+    }
     setOperation(operation);
+    setOverWrite(true);
   };
 
   // clear button
@@ -55,6 +107,7 @@ const Home = () => {
         clear={clear}
         del={del}
         percent={percent}
+        equals={equals}
       />
     </Container>
   );
