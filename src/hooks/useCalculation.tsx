@@ -97,7 +97,6 @@ export const useCalculation = () => {
     setOverWrite(true);
 
     // clear state values from local storage
-
     localStorage.setItem("currValue", "0");
     localStorage.setItem("operation", "");
     localStorage.setItem("prevValue", "");
