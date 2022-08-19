@@ -108,6 +108,7 @@ export const useCalculation = () => {
   // percent button
   const percent = () => {
     const curr = parseFloat(currValue);
+    localStorage.setItem("currValue", (curr / 100).toString());
     setCurrValue((curr / 100).toString());
   };
 
