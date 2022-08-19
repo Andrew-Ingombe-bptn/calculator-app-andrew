@@ -56,7 +56,7 @@ export const useCalculation = () => {
 
   // select digit
   const selectDigit = (digit: string) => {
-    if (currValue[currValue.length - 1] === "0" && digit === "0") return;
+    if (currValue === "0" && digit === "0") return;
     if (currValue.includes(".") && digit == ".") return;
     if (overWrite && digit !== ".") {
       localStorage.setItem("currValue", digit);
@@ -70,10 +70,10 @@ export const useCalculation = () => {
 
   //   select operation
   const selectOperation = (operation: string) => {
-    if (currValue[currValue.length - 1] === "0" && operation === "/") return;
-    if (currValue[currValue.length - 1] === "0" && operation === "*") return;
-    if (currValue[currValue.length - 1] === "0" && operation === "-") return;
-    if (currValue[currValue.length - 1] === "0" && operation === "+") return;
+    if (currValue === "0" && operation === "/") return;
+    if (currValue === "0" && operation === "*") return;
+    if (currValue === "0" && operation === "-") return;
+    if (currValue === "0" && operation === "+") return;
 
     if (prevValue) {
       const val = calculate();
