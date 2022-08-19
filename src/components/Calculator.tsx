@@ -20,6 +20,8 @@ type CalculatorProps = {
   operation: string;
   currValue: string;
   clear: () => void;
+  del: () => void;
+  percent: () => void;
 };
 
 const Calculator = ({
@@ -28,6 +30,8 @@ const Calculator = ({
   operation,
   currValue,
   clear,
+  del,
+  percent,
 }: CalculatorProps) => {
   return (
     <CalculatorWrapper>
@@ -37,6 +41,8 @@ const Calculator = ({
         selectDigit={selectDigit}
         operation={operation}
         clear={clear}
+        del={del}
+        percent={percent}
       />
     </CalculatorWrapper>
   );

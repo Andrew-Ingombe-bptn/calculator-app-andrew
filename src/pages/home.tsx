@@ -33,6 +33,18 @@ const Home = () => {
     setOverWrite(true);
   };
 
+  // delete button
+  const del = () => {
+    setCurrValue("0");
+    setOverWrite(true);
+  };
+
+  // percent button
+  const percent = () => {
+    const curr = parseFloat(currValue);
+    setCurrValue((curr / 100).toString());
+  };
+
   return (
     <Container>
       <Calculator
@@ -41,6 +53,8 @@ const Home = () => {
         operation={operation}
         currValue={currValue}
         clear={clear}
+        del={del}
+        percent={percent}
       />
     </Container>
   );

@@ -7,9 +7,18 @@ type PadProps = {
   selectDigit: (digit: string) => void;
   operation: string;
   clear: () => void;
+  del: () => void;
+  percent: () => void;
 };
 
-const Pad = ({ selectOperation, operation, selectDigit, clear }: PadProps) => {
+const Pad = ({
+  selectOperation,
+  operation,
+  selectDigit,
+  clear,
+  del,
+  percent,
+}: PadProps) => {
   return (
     <Grid container spacing={1}>
       <Grid item container columnSpacing={1}>
@@ -20,12 +29,12 @@ const Pad = ({ selectOperation, operation, selectDigit, clear }: PadProps) => {
         />
         <OperationButton
           operation="C"
-          selectOperation={selectOperation}
+          selectOperation={del}
           selectedOperation={operation}
         />
         <OperationButton
           operation="%"
-          selectOperation={selectOperation}
+          selectOperation={percent}
           selectedOperation={operation}
         />
         <OperationButton
