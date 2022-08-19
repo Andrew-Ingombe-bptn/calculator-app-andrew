@@ -6,15 +6,16 @@ type PadProps = {
   selectOperation: (operation: string) => void;
   selectDigit: (digit: string) => void;
   operation: string;
+  clear: () => void;
 };
 
-const Pad = ({ selectOperation, operation, selectDigit }: PadProps) => {
+const Pad = ({ selectOperation, operation, selectDigit, clear }: PadProps) => {
   return (
     <Grid container spacing={1}>
       <Grid item container columnSpacing={1}>
         <OperationButton
           operation="AC"
-          selectOperation={selectOperation}
+          selectOperation={clear}
           selectedOperation={operation}
         />
         <OperationButton
@@ -69,7 +70,7 @@ const Pad = ({ selectOperation, operation, selectDigit }: PadProps) => {
         <DigitButton digit="0" selectDigit={selectDigit} />
         <DigitButton digit="." selectDigit={selectDigit} />
         <Grid item xs={6}>
-          <Button fullWidth variant="outlined">
+          <Button fullWidth variant="contained">
             =
           </Button>
         </Grid>

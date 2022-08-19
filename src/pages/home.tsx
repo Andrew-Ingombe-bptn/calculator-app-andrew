@@ -13,6 +13,8 @@ const Container = styled.div`
 const Home = () => {
   const [currValue, setCurrValue] = useState("0");
   const [operation, setOperation] = useState("");
+  const [prevValue, setPrevValue] = useState("");
+  const [overWrite, setOverWrite] = useState(true);
 
   const selectDigit = (digit: string) => {
     setCurrValue(digit);
@@ -22,6 +24,15 @@ const Home = () => {
     setOperation(operation);
   };
 
+  // clear button
+  // clear button
+  const clear = () => {
+    setPrevValue("");
+    setOperation("");
+    setCurrValue("0");
+    setOverWrite(true);
+  };
+
   return (
     <Container>
       <Calculator
@@ -29,6 +40,7 @@ const Home = () => {
         selectOperation={selectOperation}
         operation={operation}
         currValue={currValue}
+        clear={clear}
       />
     </Container>
   );

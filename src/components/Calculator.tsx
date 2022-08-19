@@ -19,6 +19,7 @@ type CalculatorProps = {
   selectOperation: (operation: string) => void;
   operation: string;
   currValue: string;
+  clear: () => void;
 };
 
 const Calculator = ({
@@ -26,6 +27,7 @@ const Calculator = ({
   selectOperation,
   operation,
   currValue,
+  clear,
 }: CalculatorProps) => {
   return (
     <CalculatorWrapper>
@@ -34,6 +36,7 @@ const Calculator = ({
         selectOperation={selectOperation}
         selectDigit={selectDigit}
         operation={operation}
+        clear={clear}
       />
     </CalculatorWrapper>
   );
