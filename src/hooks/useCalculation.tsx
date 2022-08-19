@@ -70,6 +70,11 @@ export const useCalculation = () => {
 
   //   select operation
   const selectOperation = (operation: string) => {
+    if (currValue[0] === "0" && operation === "/") return;
+    if (currValue[0] === "0" && operation === "*") return;
+    if (currValue[0] === "0" && operation === "-") return;
+    if (currValue[0] === "0" && operation === "+") return;
+
     if (prevValue) {
       const val = calculate();
       localStorage.setItem("prevValue", `${val}`);
