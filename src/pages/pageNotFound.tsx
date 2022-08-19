@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -24,7 +25,7 @@ const Button = styled.button`
 const PageNotFound = () => {
   return (
     <Container>
-      <h1>Opos!!!... Page Not Found - </h1>
+      <Typography variant="h3">Opos!!!... Page Not Found - </Typography>
       <div>
         <Link to={"/"}>
           <Button>Go to Home</Button>
