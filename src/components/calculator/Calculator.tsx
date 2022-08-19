@@ -37,7 +37,7 @@ const Calculator = ({
 }: CalculatorProps) => {
   return (
     <CalculatorWrapper>
-      <Display currValue={currValue} />
+      <Display currValue={currValue} operation={operation} />
       <Pad
         selectOperation={selectOperation}
         selectDigit={selectDigit}

@@ -2,7 +2,8 @@ import { styled } from "@mui/material";
 import React from "react";
 
 const DisplayContainer = styled("div")(({ theme }) => ({
-  textAlign: "right",
+  display: "flex",
+  justifyContent: "space-between",
   paddingLeft: theme.spacing(1),
   height: "5rem",
   width: "100%",
@@ -11,16 +12,24 @@ const DisplayContainer = styled("div")(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
+const Div = styled("div")(({ theme }) => ({
+  fontSize: "40px",
+}));
+
 type DisplayProps = {
   currValue: string;
+  operation: string;
 };
 
-const Display: React.FC<DisplayProps> = ({ currValue }: DisplayProps) => {
+const Display: React.FC<DisplayProps> = ({
+  currValue,
+  operation,
+}: DisplayProps) => {
   return (
     <DisplayContainer
       sx={{ border: 2, borderRadius: 1, borderColor: "#009688" }}
     >
-      {currValue}
+      <Div>{operation}</Div> {currValue}
     </DisplayContainer>
   );
 };
