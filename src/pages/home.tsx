@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Calculator from "../components/Calculator";
+import Calculator from "../components/calculator/Calculator";
 
 const Container = styled.div`
   display: flex;

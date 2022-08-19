@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Pad from "./Pad";
-import Display from "./Display";
+import Pad from "../pad/Pad";
+import Display from "../display/Display";
 
 const CalculatorWrapper = styled.div`
   width: 100%;

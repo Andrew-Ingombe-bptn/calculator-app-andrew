@@ -1,6 +1,6 @@
-import { styled, Grid, Button } from "@mui/material";
-import DigitButton from "./DigitButton";
-import OperationButton from "./OperationButton";
+import { Grid, Button } from "@mui/material";
+import DigitButton from "../digit_button/DigitButton";
+import OperationButton from "../operation_button/OperationButton";
 
 type PadProps = {
   selectOperation: (operation: string) => void;
