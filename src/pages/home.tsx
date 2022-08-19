@@ -1,6 +1,6 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Calculator from "../components/calculator/Calculator";
+import { useCalculation } from "../hooks/useCalculation";
 
 const Container = styled.div`
   display: flex;
@@ -11,91 +11,16 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const [currValue, setCurrValue] = useState("0");
-  const [operation, setOperation] = useState("");
-  const [prevValue, setPrevValue] = useState("");
-  const [overWrite, setOverWrite] = useState(true);
-
-  // calculate function
-  const calculate = () => {
-    if (!prevValue || !operation) return currValue;
-    const curr = parseFloat(currValue);
-    const prev = parseFloat(prevValue);
-
-    let result;
-
-    switch (operation) {
-      case "/":
-        result = prev / curr;
-        break;
-      case "*":
-        result = prev * curr;
-        break;
-      case "-":
-        result = prev - curr;
-        break;
-      case "+":
-        result = prev + curr;
-        break;
-    }
-
-    return result;
-  };
-
-  // equal button
-  const equals = () => {
-    const val = calculate();
-
-    console.log("value", val);
-    setCurrValue(`${val}`);
-    setPrevValue("");
-    setOperation("");
-    setOverWrite(true);
-  };
-
-  const selectDigit = (digit: string) => {
-    if (currValue[0] === "0" && digit === "0") return;
-    if (currValue.includes(".") && digit == ".") return;
-    if (overWrite && digit !== ".") {
-      setCurrValue(digit);
-    } else {
-      setCurrValue(`${currValue}${digit}`);
-    }
-    setOverWrite(false);
-  };
-
-  const selectOperation = (operation: string) => {
-    if (prevValue) {
-      const val = calculate();
-      setCurrValue(`${val}`);
-      setPrevValue(`${val}`);
-    } else {
-      setPrevValue(currValue);
-    }
-    setOperation(operation);
-    setOverWrite(true);
-  };
-
-  // clear button
-  // clear button
-  const clear = () => {
-    setPrevValue("");
-    setOperation("");
-    setCurrValue("0");
-    setOverWrite(true);
-  };
-
-  // delete button
-  const del = () => {
-    setCurrValue("0");
-    setOverWrite(true);
-  };
-
-  // percent button
-  const percent = () => {
-    const curr = parseFloat(currValue);
-    setCurrValue((curr / 100).toString());
-  };
+  const {
+    percent,
+    currValue,
+    operation,
+    del,
+    clear,
+    selectOperation,
+    selectDigit,
+    equals,
+  } = useCalculation();
 
   return (
     <Container>
