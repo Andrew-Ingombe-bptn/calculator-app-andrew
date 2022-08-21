@@ -31,7 +31,7 @@ const Display: React.FC<DisplayProps> = ({
     <DisplayContainer
       sx={{ border: 2, borderRadius: 1, borderColor: "#009688" }}
     >
-      <Div>{operation}</Div>
+      <Div>{operation === "+/-" ? "" : operation}</Div>
       <p style={{ fontSize: currValue?.length > 12 ? "1rem" : "2rem" }}>
         {currValue}
       </p>

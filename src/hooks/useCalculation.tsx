@@ -36,7 +36,6 @@ export const useCalculation = () => {
     }
 
     // clear state values from local storage
-
     localStorage.setItem("currValue", "0");
     localStorage.setItem("operation", "");
     localStorage.setItem("prevValue", "");
@@ -58,6 +57,7 @@ export const useCalculation = () => {
   const selectDigit = (digit: string) => {
     if (currValue === "0" && digit === "0") return;
     if (currValue.includes(".") && digit == ".") return;
+
     if (overWrite && digit !== ".") {
       localStorage.setItem("currValue", digit);
       setCurrValue(digit);
@@ -70,10 +70,7 @@ export const useCalculation = () => {
 
   //   select operation
   const selectOperation = (operation: string) => {
-    if (currValue === "0" && operation === "/") return;
-    if (currValue === "0" && operation === "*") return;
-    if (currValue === "0" && operation === "-") return;
-    if (currValue === "0" && operation === "+") return;
+    if (currValue === "0" && operation) return;
 
     if (prevValue) {
       const val = calculate();
@@ -116,6 +113,13 @@ export const useCalculation = () => {
     setCurrValue((curr / 100).toString());
   };
 
+  //invert button
+  const invertButton = () => {
+    const curr = parseFloat(currValue);
+    localStorage.setItem("currValue", (curr * -1).toString());
+    setCurrValue((curr * -1).toString());
+  };
+
   return {
     currValue,
     setCurrValue,
@@ -132,5 +136,6 @@ export const useCalculation = () => {
     clear,
     del,
     percent,
-  } as const;
+    invertButton,
+  };
 };

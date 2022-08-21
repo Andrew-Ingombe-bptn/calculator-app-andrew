@@ -20,6 +20,7 @@ const Home = () => {
     selectOperation,
     selectDigit,
     equals,
+    invertButton,
   } = useCalculation();
 
   return (
@@ -33,6 +34,7 @@ const Home = () => {
         del={del}
         percent={percent}
         equals={equals}
+        invertButton={invertButton}
       />
     </Container>
   );

@@ -10,6 +10,7 @@ type PadProps = {
   del: () => void;
   percent: () => void;
   equals: () => void;
+  invertButton: () => void;
 };
 
 const Pad = ({
@@ -20,6 +21,7 @@ const Pad = ({
   del,
   percent,
   equals,
+  invertButton,
 }: PadProps) => {
   return (
     <Grid container spacing={1}>
@@ -80,11 +82,17 @@ const Pad = ({
       <Grid item container columnSpacing={1}>
         <DigitButton digit="0" selectDigit={selectDigit} />
         <DigitButton digit="." selectDigit={selectDigit} />
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <Button fullWidth variant="contained" onClick={equals}>
             =
           </Button>
         </Grid>
+
+        <OperationButton
+          operation="+/-"
+          selectOperation={invertButton}
+          selectedOperation={operation}
+        />
       </Grid>
     </Grid>
   );
