@@ -101,8 +101,14 @@ export const useCalculation = () => {
 
   // delete button
   const del = () => {
-    setCurrValue("0");
-    localStorage.setItem("currValue", "0");
+    if (currValue.length > 0) {
+      let newCurrValue = currValue.slice(0, -1);
+      if (!newCurrValue) {
+        newCurrValue = "0";
+      }
+      setCurrValue(newCurrValue);
+      localStorage.setItem("currValue", newCurrValue);
+    }
     setOverWrite(true);
   };
 
