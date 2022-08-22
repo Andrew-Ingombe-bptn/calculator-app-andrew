@@ -56,10 +56,14 @@ export const useCalculation = () => {
   // select digit
   const selectDigit = (digit: string) => {
     if (currValue === "0" && digit === "0") return;
-    if (currValue.includes(".") && digit == ".") return;
+
+    if (currValue.includes(".") && digit == ".") {
+      return;
+    }
 
     if (overWrite && digit !== ".") {
       localStorage.setItem("currValue", digit);
+
       setCurrValue(digit);
     } else {
       localStorage.setItem("currValue", `${currValue}${digit}`);
@@ -75,14 +79,16 @@ export const useCalculation = () => {
     if (prevValue) {
       const val = calculate();
       localStorage.setItem("prevValue", `${val}`);
-      setCurrValue(`${val}`);
       setPrevValue(`${val}`);
     } else {
       localStorage.setItem("prevValue", currValue);
       setPrevValue(currValue);
     }
+
+    setCurrValue(`${0}`);
     setOperation(operation);
     localStorage.setItem("operation", operation);
+    localStorage.setItem("currValue", `${0}`);
     setOverWrite(true);
   };
 
