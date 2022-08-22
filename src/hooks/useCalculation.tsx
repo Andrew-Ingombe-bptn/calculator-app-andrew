@@ -113,11 +113,18 @@ export const useCalculation = () => {
     setCurrValue((curr / 100).toString());
   };
 
+  // Negation function
+  function negate(currValue: string) {
+    if (currValue === "0") {
+      return "0";
+    } else if (currValue[0] === "-") {
+      return currValue.replace("-", "");
+    } else return "-" + currValue;
+  }
+
   //invert button
   const invertButton = () => {
-    const curr = parseFloat(currValue);
-    localStorage.setItem("currValue", (curr * -1).toString());
-    setCurrValue((curr * -1).toString());
+    setCurrValue(negate(currValue).toString());
   };
 
   return {
